@@ -27,12 +27,16 @@ void main() {
 
   //3.2
   //print(greetSomeone()); //Esta no se puede ejecutar porque si no se define los parametros de una funsion por default estan definidos como obligatorios
-  
+
   //4. Llamado de una funcion con parametros opcionales.
   //4.1 Enviando ambos parametros
   print(greetHourOfDay("Cristian",20));
   //4.2 solo enviando el obligatorio
   print(greetHourOfDay("Cristian",null));
+
+
+  
+
   //5. Funciones Lambda - Las funciones lambda, mejor conocidas como funciones simplificadas, se ejecutan de manera simple y no frcuente en la ejecucion de un programa o sistema
   var calculaCosto=(double productQuantity, double productPrice, double percentageDiscount ) => (productQuantity * productPrice)*((100-percentageDiscount)/100);
   double cantidadProducto = 5;
@@ -45,7 +49,14 @@ void main() {
   -------------------------------------------------------------------------
   Costo del carrito de compras: ${calculaCosto(cantidadProducto,precioProducto,descuento)}
   """);
-
+//6. Llamado de una funcion con parametros nombre
+print(infoCarListStatus(buyerName: "Cristian"));
+  
+  print(infoCarListStatus(
+    status: "En espera de pago",
+    amountCarList: 2416.20,
+    buyerName: "Myriam"
+  ));
 }
 
 // funciones y parametros
@@ -80,13 +91,17 @@ String greetSomeoneTyped(String personName)
     return("Hola, ${personName}");
 }
 //4. Funcion con parametros opcionales
+
+
+
 //int? Puede ser opcional - NullSafety
 String greetHourOfDay(String personName, int? hora)
 {
+  //el operador ??= significa que si es nulo lo inicialice como, en caso de que tenga el valor  ignora la instruccion
     hora ??= DateTime.now().hour; // si es nulo entonces...
     print("Hora: ${hora}");
     String saludo;
-    
+
     if(hora>=6 && hora<12)
     {
         saludo = "Buenos dias";
@@ -99,8 +114,23 @@ String greetHourOfDay(String personName, int? hora)
     {
         saludo="Buenas noches";
     }
-    
+
     return "${saludo}, ${personName}";
-    
+
+
+
+
+
+  
+  
 }
 //las funciones flechas en dart solo pueden llevar una sola instruccion
+
+// 6 Funciones con parametros nombrados
+
+String infoCarListStatus(
+  {required String buyerName,
+  double amountCarList = 0.0,
+  String status = "Seleccion de productos"}) {
+  return "El carrito de compras de: ${buyerName}, tiene un total de: \$${amountCarList} y actualmente esta en estatus: ${status}";
+  }
