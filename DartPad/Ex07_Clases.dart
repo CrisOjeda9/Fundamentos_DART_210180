@@ -25,10 +25,10 @@ void main()
   print(justiceLeague);
   print(justiceLeague.name);
   print(justiceLeague.type);
-  
+
   //Intentamos instanciar la clase con solo el valor tipo, que no lo permite por que la propiedad de nombre es requerida
   //final hydra=Team(type: "Villanos");
-
+  print(justiceLeague.toString());
 }
 
 //Clase con propiedades posicionales
@@ -40,7 +40,7 @@ class Hero
   Hero(String pName,String pPower):
     name = pName,
     power = pPower;
-  
+
 }
 
 //Clase con propiedades no posicionales y nombradas
@@ -50,4 +50,9 @@ class Team
   String type;
   //el constructor de la clase siempre debe llevar el mismo nombre de la misma
   Team({required this.name, this.type = "No definido."});
+
+  @override
+  String toString(){
+    return 'Grupo: $name, Tipo: $type';
+  }
 }
