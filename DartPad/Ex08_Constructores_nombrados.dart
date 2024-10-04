@@ -104,7 +104,7 @@ class Person
       Grupo Sanguineo: $bloodGroup
       Fecha de nacimiento: $formateBirthDate
       CURP: $curp
-      Activo: $isActive
+      Activo: $status
       Fecha de registro:  $formateCreateDate
       --------------------------------------------------------------
       """;
