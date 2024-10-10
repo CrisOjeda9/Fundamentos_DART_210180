@@ -6,7 +6,7 @@ void main() {
     primerApellido: "Ojeda",
     segundoApellido: "Gayosso",
     genero: Genero.hombre, // Enum Género
-    grupoSanguineo: GrupoSanguineo.OPositivo, // Enum Grupo Sanguíneo
+    grupoSanguineo: GrupoSanguineo.OP, // Enum Grupo Sanguíneo
     curp: "OEGC030109HPLJYRA2",
     fechaNacimiento: DateTime(2003, 1, 9),
     estatusVida: EstatusVida.vivo, // Enum Estatus de vida
@@ -21,18 +21,18 @@ void main() {
   // Caso de prueba 2: Paciente que alguna vez fue trabajador del hospital
   final marthaFlores = Paciente(
     id: 125,
-    nombre: "Martha",
-    primerApellido: "Flores",
-    genero: Genero.mujer,
-    grupoSanguineo: GrupoSanguineo.OPositivo,
-    curp: "MFL123456789",
+    nombre: "Carlos",
+    primerApellido: "Hernadez",
+    genero: Genero.hombre,
+    grupoSanguineo: GrupoSanguineo.OP,
+    curp: "HJC031226HPLYRA2",
     fechaNacimiento: DateTime(2008, 1, 8),
     estatusVida: EstatusVida.vivo,
-    estatusMedico: "ex-trabajadora",
+    estatusMedico: "ex-trabajador",
     nss: "0987654321",
-    tipoSeguro: TipoSeguro.ISSSTE,
+    tipoSeguro: TipoSeguro.IMSS,
     fechaUltimaCita: DateTime.now(),
-    fechaRegistro: DateTime.now().subtract(Duration(days: 30)),
+    fechaRegistro: DateTime.now().subtract(Duration(days: 60)),
   );
 
   print(marthaFlores);
@@ -44,7 +44,7 @@ void main() {
     primerApellido: "Ramírez",
     segundoApellido: "Hernández",
     genero: Genero.mujer,
-    grupoSanguineo: GrupoSanguineo.BNegativo,
+    grupoSanguineo: GrupoSanguineo.BN,
     curp: "MRH123456789",
     fechaNacimiento: DateTime(1945, 10, 10),
     estatusVida: EstatusVida.vivo,
@@ -63,19 +63,7 @@ void main() {
 
   print(mariaRamirez);
 
-  // CRUD básico
-  final repository = PacienteRepository();
-  repository.crearPaciente(cristianEduardo);
-  repository.crearPaciente(marthaFlores);
-  repository.crearPaciente(mariaRamirez);
 
-  print("Listado de pacientes:");
-  repository.obtenerPacientes().forEach(print);
-
-  repository.eliminarPaciente(cristianEduardo.id);
-
-  print("\nDespués de eliminar a Juan Pérez:");
-  repository.obtenerPacientes().forEach(print);
 }
 
 // Enum para el estatus de vida del paciente
@@ -85,7 +73,7 @@ enum EstatusVida { vivo, fallecido }
 enum TipoSeguro { IMSS, ISSSTE, SeguroPopular }
 
 // Enum para el grupo sanguíneo
-enum GrupoSanguineo { OPositivo, ONegativo, APositivo, ANegativo, BPositivo, BNegativo, ABPositivo, ABNegativo }
+enum GrupoSanguineo { OP, ON, AP, AN, BP, BN, ABP, ABN }
 
 // Enum para el género
 enum Genero { hombre, mujer, otro }
@@ -223,27 +211,5 @@ class Paciente extends Persona {
 
     result += "--------------------------------------------------------------\n";
     return result;
-  }
-}
-
-// CRUD Básico para la clase Paciente
-class PacienteRepository {
-  final List<Paciente> _pacientes = [];
-
-  // Crear paciente
-  void crearPaciente(Paciente paciente) {
-    _pacientes.add(paciente);
-    print("Paciente creado: ${paciente.nombre}");
-  }
-
-  // Leer todos los pacientes
-  List<Paciente> obtenerPacientes() {
-    return _pacientes;
-  }
-
-  // Eliminar paciente
-  void eliminarPaciente(int id) {
-    _pacientes.removeWhere((paciente) => paciente.id == id);
-    print("Paciente con ID $id eliminado.");
   }
 }

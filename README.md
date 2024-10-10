@@ -19,8 +19,9 @@ Proyecto de clase para la Unidad 1 de la Asignatura de Desarrollo Móvil Integra
 |10|Constructores Nombrados|8|Finalizada|
 |11|Getters(Lectura controlada) y Setters(Modificacion controlada)|9|Finalizada|
 |12|Classes Abstractas|11|Activa|
+|Tarea 04|Uso de las clases abstractas en el caso de estudio|10|Activa|
 |13|Aserciones|3|Activa|
-|14|Mixin|7|Activa|
+|14|Mixins|11|Activa|
 
 
 
