@@ -2,7 +2,7 @@ void main() {
   print('Inicio del programa');
   //Peticion HTTP
   httpGet('https://fernando-herrera.com/cursos')
-      .then((valor) {
+      .then((valor) {//se guarda la resuesta
         print(valor);
       })
       .catchError((err) { //Atrapa un error
@@ -14,10 +14,10 @@ void main() {
 
 Future<String> httpGet(String url) {
   return Future.delayed(const Duration(seconds: 1), () {
-    // Error en la petición HTTP
+    // Devuelve un error en la petición HTTP
     throw 'Error en la petición http';
 
-    // espuesta exitosa
+    // respuesta exitosa(descomentar la linea que sigue)
     // return 'Respuesta de la petición http';
   });
 }
